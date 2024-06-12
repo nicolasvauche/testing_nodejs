@@ -1,9 +1,13 @@
 name: NodeJS CI
 
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
 on:
     pull_request:
       branches: [ main, develop ]
-      types: [ opened ]
+      types: [ opened, edited, synchronize ]
 
 jobs:
   build:
@@ -29,3 +33,15 @@ jobs:
     
     - name: Execute lints via ESLint and Standard
       run: npm run lint
+
+    - name: Install Vercel CLI
+      run: npm install --global vercel@latest
+
+    - name: Pull Vercel Environment Information
+      run: vercel pull --yes --environment=production --token=LSJcsmap3ytUSwHaRbB2Ancb
+
+    - name: Build Project Artifacts
+      run: vercel build --prod --token=LSJcsmap3ytUSwHaRbB2Ancb
+
+    - name: Deploy Project Artifacts to Vercel
+      run: vercel deploy --prebuilt --prod --token=LSJcsmap3ytUSwHaRbB2Ancb
