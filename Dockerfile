@@ -7,8 +7,9 @@ WORKDIR /usr/src/app
 # Copier les fichiers package.json et package-lock.json (si disponible)
 COPY . .
 
-# Installer les dépendances de l'application
-RUN npm install
+# Ajouter un script d'entrée
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Installer nodemon globalement
 RUN npm install -g nodemon
@@ -16,5 +17,5 @@ RUN npm install -g nodemon
 # Exposer le port que l'application va utiliser
 EXPOSE 3000
 
-# Définir la commande de démarrage de l'application
-CMD ["npm", "start"]
+# Définir la commande de démarrage du conteneur
+ENTRYPOINT ["entrypoint.sh"]
