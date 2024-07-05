@@ -15,4 +15,4 @@ Ce projet est une application Node.js configurée pour s'exécuter dans des cont
     docker-compose up -d
     ```
 3. Accédez à l'application :  
-    Ouvrez votre navigateur et accédez à `http://localhost:8081/hello/<votre-prenom>`.
+    Ouvrez votre navigateur et accédez à `http://localhost:3000/hello/<votre-prenom>`.
