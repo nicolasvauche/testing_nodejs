@@ -10,4 +10,4 @@ const truc = () => {
   return `Truc`
 }
 
-module.exports = { greet, bye }
+module.exports = { greet, bye, truc }
