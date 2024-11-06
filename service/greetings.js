@@ -6,4 +6,8 @@ const bye = name => {
   return `Goodbye, ${name}!`
 }
 
-module.exports = { greet, bye }
+const truc = () => {
+  return 'Truc'
+}
+
+module.exports = { greet, bye, truc }
