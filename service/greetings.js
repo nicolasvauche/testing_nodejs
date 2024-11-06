@@ -7,7 +7,7 @@ const bye = name => {
 }
 
 const truc = () => {
-  return `Truc`
+  return 'Truc'
 }
 
 module.exports = { greet, bye, truc }
